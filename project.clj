@@ -7,7 +7,7 @@
 
   :source-paths ["src/clj"]
 
-  :plugins [[lein-cljsbuild "1.1.3"]]
+  :plugins [[lein-cljsbuild "1.1.3"]] 
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
