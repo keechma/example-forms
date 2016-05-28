@@ -1,7 +1,8 @@
 (ns keechma-forms-example.core
   (:require [reagent.core :as reagent]
             [forms.core :as f]
-            [forms.validator :as v]))
+            [forms.validator :as v]
+            [json-html.core :as j]))
 
 (def validations
   "Shared validator definitions"
@@ -18,16 +19,6 @@
   (reduce-kv (fn [m attr v]
                (assoc m attr
                       (map (fn [k] [k (get-in validations [k :validator])]) v))) {} config))
-
-;; The form works on the following data structure:
-
-;; {:username "retro"
-;;  :password "keechmaI$4w3$0m3"
-;;  :name "Mihael Konjevic"
-;;  :email "konjevic@gmail.com"
-;;  :accounts [{:network "twitter"
-;;              :username "mihaelkonjevic"}]
-;;  :phone-numbers ["000/000-0000"]}
 
 (def validator
   "Defines the validator for the form."
@@ -199,7 +190,11 @@
        "Add Phone Number"]
       [render-phone-numbers form]
       [:hr]
-      [:button.btn.btn-primary "Submit"]]]))
+      [:button.btn.btn-primary "Submit"]]
+     [:hr]
+     [:h1 "Form Data:"]
+     [:div.form-data-wrapper
+      (j/edn->hiccup @(f/data form))]]))
 
 (defn reload []
   (reagent/render [forms-render inited-form]
