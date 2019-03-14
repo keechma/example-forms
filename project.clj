@@ -1,8 +1,9 @@
 (defproject keechma-forms-example "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.7.0"]
-                 [org.clojure/clojurescript "1.7.228"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [json-html "0.4.0"]
-                 [reagent "0.5.1"]]
+                 [keechma/forms "0.1.4"]
+                 [re-frame "0.10.6"]]
 
   :min-lein-version "2.5.3"
 
@@ -17,7 +18,7 @@
 
   :profiles
   {:dev
-   {:plugins [[lein-figwheel "0.5.3"]]
+   {:plugins [[lein-figwheel "0.5.18"]]
 
    }}
 
@@ -30,6 +31,15 @@
                     :output-to            "resources/public/js/compiled/app.js"
                     :output-dir           "resources/public/js/compiled/out"
                     :asset-path           "js/compiled/out"
+                    :source-map-timestamp true}}
+
+    {:id           "dev-re-frame"
+     :source-paths ["src/cljs"]
+     :figwheel     {:on-jsload "keechma-forms-example.re-frame/reload"}
+     :compiler     {:main                 keechma-forms-example.re-frame
+                    :output-to            "resources/public/js/compiled/app-re-frame.js"
+                    :output-dir           "resources/public/js/compiled/out-rf"
+                    :asset-path           "js/compiled/out-rf"
                     :source-map-timestamp true}}
 
     {:id           "min"
