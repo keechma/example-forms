@@ -1,16 +1,16 @@
 (defproject keechma-forms-example "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.520"]
-                 [json-html "0.4.0"]
-                 [keechma/forms "0.1.4"]
-                 [re-frame "0.10.6"]]
+  :dependencies [[org.clojure/clojure "1.10.1"]
+                 [org.clojure/clojurescript "1.10.597"]
+                 [json-html "0.4.7"]
+                 [keechma/forms "0.1.6"]
+                 [re-frame "0.11.0"]]
 
   :min-lein-version "2.5.3"
 
   :source-paths ["src/clj"]
 
-  :plugins [[lein-cljsbuild "1.1.3"]
-            [michaelblume/lein-marginalia "0.9.0"]] 
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [lein-marginalia "0.9.1"]]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
@@ -18,7 +18,7 @@
 
   :profiles
   {:dev
-   {:plugins [[lein-figwheel "0.5.18"]]
+   {:plugins [[lein-figwheel "0.5.19"]]
 
    }}
 
